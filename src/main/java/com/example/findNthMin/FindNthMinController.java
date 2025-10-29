@@ -21,7 +21,7 @@ public class FindNthMinController {
     public int userRegistration(
             @Parameter(description = "FilePath", required = true)
             @RequestParam String path,
-            @Parameter(description = "element number", required = true)
+            @Parameter(description = "Element number", required = true)
             @RequestParam int n
     ){
         return findNthMinService.findNthMin(path, n);
