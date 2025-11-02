@@ -1,5 +1,7 @@
 package com.example.findNthMin;
 
+import com.example.findNthMin.exception.FindNthMinIOException;
+import com.example.findNthMin.exception.NOutOfBound;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -15,9 +17,16 @@ import java.util.Random;
 @Component
 public class FindNthMinService {
 
+    private final PathValidator pathValidator;
+
+    public FindNthMinService(PathValidator pathValidator){
+        this.pathValidator = pathValidator;
+    }
+
     //Return -1 when not found (must throw custom exception)
     public int findNthMin(String path, int n){
-        if (n < 1) return -1;
+        pathValidator.validPath(path);
+        if (n < 1) throw new NOutOfBound("N < 1");
         var numbers = new ArrayList<Integer>();
         //numbers.add(Integer.MAX_VALUE); // for LinkedList<>
         try (FileInputStream file = new FileInputStream(path); XSSFWorkbook workbook = new XSSFWorkbook(file)){
@@ -51,16 +60,15 @@ public class FindNthMinService {
                 if(cell == null || cell.getCellType() != CellType.NUMERIC) break;
                 numbers.add((int)cell.getNumericCellValue());
             }
-            if (n > numbers.size()) return -1;
+            if (n > numbers.size()) throw new NOutOfBound("N grater than numbers count");
             else {
                 quickSort(numbers);
                 return numbers.get(n-1);
             }
         } catch (IOException e) {
             e.printStackTrace();
+            throw new FindNthMinIOException(e.getMessage());
         }
-
-        return -1;
     }
 
     public static void quickSort(ArrayList<Integer> arr) {
