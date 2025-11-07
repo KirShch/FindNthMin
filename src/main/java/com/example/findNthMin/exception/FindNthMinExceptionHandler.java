@@ -18,13 +18,13 @@ public class FindNthMinExceptionHandler {
         );
     }
 
-    @ExceptionHandler(IncorrectPath.class)
-    public ResponseEntity<ExceptionResponseDto> handleResourceNotFoundException(IncorrectPath ex, WebRequest request) {
+    @ExceptionHandler(IncorrectPathException.class)
+    public ResponseEntity<ExceptionResponseDto> handleResourceNotFoundException(IncorrectPathException ex, WebRequest request) {
         return new ResponseEntity<>(getResponse(ex, request), ex.getStatus());
     }
 
-    @ExceptionHandler(NOutOfBound.class)
-    public ResponseEntity<ExceptionResponseDto> handleResourceNotFoundException(NOutOfBound ex, WebRequest request) {
+    @ExceptionHandler(NOutOfBoundException.class)
+    public ResponseEntity<ExceptionResponseDto> handleResourceNotFoundException(NOutOfBoundException ex, WebRequest request) {
         return new ResponseEntity<>(getResponse(ex, request), ex.getStatus());
     }
 

@@ -1,6 +1,6 @@
 package com.example.findNthMin;
 
-import com.example.findNthMin.exception.IncorrectPath;
+import com.example.findNthMin.exception.IncorrectPathException;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.InvalidPathException;
@@ -13,7 +13,7 @@ public class PathValidator {
         try {
             Paths.get(path);
         } catch (InvalidPathException e) {
-            throw new IncorrectPath(e.getMessage());
+            throw new IncorrectPathException(e.getMessage());
         }
     }
 }

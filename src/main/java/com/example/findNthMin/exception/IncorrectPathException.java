@@ -2,8 +2,8 @@ package com.example.findNthMin.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class IncorrectPath extends FindNthMinException{
-    public IncorrectPath(String message){
+public class IncorrectPathException extends FindNthMinException{
+    public IncorrectPathException(String message){
         super(message, HttpStatus.NOT_FOUND);
     }
 }

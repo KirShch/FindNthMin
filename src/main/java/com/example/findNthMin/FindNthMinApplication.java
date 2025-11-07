@@ -9,5 +9,4 @@ public class FindNthMinApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FindNthMinApplication.class, args);
 	}
-
 }
