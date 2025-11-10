@@ -22,7 +22,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9")
-	implementation("org.apache.poi:poi-ooxml:5.2.4")
+	implementation("org.dhatim:fastexcel:0.16.0")
+	implementation("org.dhatim:fastexcel-reader:0.16.0")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
